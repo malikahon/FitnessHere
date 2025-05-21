@@ -1,0 +1,10 @@
+<Data>
+    <Members>
+        <Member FirstName="Diana" LastName="Shah" PhoneNumber="1234567890" DateOfBirth="1990-05-15" Email="whogivesafuck.com" ProfilePicture="" IsMale="1" />
+        <Member FirstName="Sevara" LastName="Jones" PhoneNumber="0987654421" DateOfBirth="1985-10-20" Email="whatup@asshole.com" ProfilePicture="" IsMale="0" />
+    </Members>
+    <Trainers>
+        <Trainer FirstName="So" LastName="Slim" PhoneNumber="5551234567" Email="prostrate@soslim.com" ExperienceYears="5" IsMale="1" Salary="50000.00" />
+        <Trainer FirstName="Willy" LastName="Nilly" PhoneNumber="5557654321" Email="willynilly@example.com" ExperienceYears="3" IsMale="0" Salary="40000.00" />
+    </Trainers>
+</Data>

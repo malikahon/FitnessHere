@@ -1,0 +1,43 @@
+
+{
+  "Members": [
+    {
+      "FirstName": "Ali",
+      "LastName": "Karimov",
+      "PhoneNumber": "+998901234567",
+      "DateOfBirth": "1992-07-10",
+      "Email": "ali.karimov@example.com",
+      "ProfilePicture": null,
+      "IsMale": true
+    },
+    {
+      "FirstName": "Malika",
+      "LastName": "Tursunova",
+      "PhoneNumber": "+998977654321",
+      "DateOfBirth": "1998-03-25",
+      "Email": "malika.tursunova@example.com",
+      "ProfilePicture": null,
+      "IsMale": false
+    }
+  ],
+  "Trainers": [
+    {
+      "FirstName": "Bekzod",
+      "LastName": "Rakhimov",
+      "PhoneNumber": "+998935556677",
+      "Email": "bekzod.rakhimov@example.com",
+      "ExperienceYears": 5,
+      "IsMale": true,
+      "Salary": 4500.75
+    },
+    {
+      "FirstName": "Gulnora",
+      "LastName": "Saidova",
+      "PhoneNumber": "+998933334455",
+      "Email": "gulnora.saidova@example.com",
+      "ExperienceYears": 8,
+      "IsMale": false,
+      "Salary": 6200.00
+    }
+  ]
+}

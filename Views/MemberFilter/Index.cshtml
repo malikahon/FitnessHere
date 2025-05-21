@@ -1,0 +1,88 @@
+﻿@model FitnessHere.Models.MemberFilterViewModel
+
+@{
+    ViewData["Title"] = "MembersList";
+}
+
+<div class="container">
+    <h1>Member List</h1>
+
+    <!-- Filter Form -->
+    <form method="get" class="mb-3">
+        <div class="row">
+            <div class="col-md-3">
+                <input type="text" name="memberFirstName" value="@Model.MemberFirstName" placeholder="First Name" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="memberLastName" value="@Model.MemberLastName" placeholder="Last Name" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="className" value="@Model.ClassName" placeholder="Class Name" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="trainerName" value="@Model.TrainerName" placeholder="Trainer Name" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <input type="number" name="pageSize" value="@Model.PageSize" placeholder="Page Size" class="form-control" />
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-3">
+                <input type="date" name="registrationDate" value="@Model.RegistrationDate?.ToString("yyyy-MM-dd")" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">Apply Filters</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Member List -->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th>Number</th>
+                    <th>@Html.ActionLink("ID", "Index", new { sortColumn = "MemberID", sortDesc = !Model.SortDesc, MemberFirstName = Model.MemberFirstName, MemberLastName = Model.MemberLastName, ClassName = Model.ClassName, TrainerName = Model.TrainerName, RegistrationDate = Model.RegistrationDate, pageSize = Model.PageSize })</th>
+                    <th>@Html.ActionLink("Name", "Index", new { sortColumn = "FirstName", sortDesc = !Model.SortDesc, MemberFirstName = Model.MemberFirstName, MemberLastName = Model.MemberLastName, ClassName = Model.ClassName, TrainerName = Model.TrainerName, RegistrationDate = Model.RegistrationDate, pageSize = Model.PageSize })</th>
+                    <th>@Html.ActionLink("Classes", "Index", new { sortColumn = "MemberClassesList", sortDesc = !Model.SortDesc, MemberFirstName = Model.MemberFirstName, MemberLastName = Model.MemberLastName, ClassName = Model.ClassName, TrainerName = Model.TrainerName, RegistrationDate = Model.RegistrationDate, pageSize = Model.PageSize })</th>
+                    <th>@Html.ActionLink("Trainers", "Index", new { sortColumn = "TrainersList", sortDesc = !Model.SortDesc, MemberFirstName = Model.MemberFirstName, MemberLastName = Model.MemberLastName, ClassName = Model.ClassName, TrainerName = Model.TrainerName, RegistrationDate = Model.RegistrationDate, pageSize = Model.PageSize })</th>
+                    <th>@Html.ActionLink("Registration Date", "Index", new { sortColumn = "RegistrationDate", sortDesc = !Model.SortDesc, MemberFirstName = Model.MemberFirstName, MemberLastName = Model.MemberLastName, ClassName = Model.ClassName, TrainerName = Model.TrainerName, RegistrationDate = Model.RegistrationDate, pageSize = Model.PageSize })</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Members.Count; i++)
+                {
+                    var member = Model.Members[i];
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@member.MemberID.ToString()</td>
+                        <td>@member.FirstName @member.LastName</td>
+                        <td>@string.Join(", ", member.MemberClasses)</td>
+                        <td>@string.Join(", ", member.Trainers)</td>
+                        <td>@member.RegistrationDate.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-between mt-3">
+        <div>
+            <span>Page @Model.Page of @Model.TotalPages</span>
+        </div>
+        <div>
+            @if (Model.Page > 1)
+            {
+                <a href="@Url.Action("Index", new { page = Model.Page - 1, sortColumn = Model.SortColumn, sortDesc = Model.SortDesc, MemberFirstName = Model.MemberFirstName, MemberLastName = Model.MemberLastName, ClassName = Model.ClassName, TrainerName = Model.TrainerName, RegistrationDate = Model.RegistrationDate, pageSize = Model.PageSize })" class="btn btn-secondary">Previous</a>
+            }
+            @if (Model.Page < Model.TotalPages)
+            {
+                <a href="@Url.Action("Index", new { page = Model.Page + 1, sortColumn = Model.SortColumn, sortDesc = Model.SortDesc, MemberFirstName = Model.MemberFirstName, MemberLastName = Model.MemberLastName, ClassName = Model.ClassName, TrainerName = Model.TrainerName, RegistrationDate = Model.RegistrationDate, pageSize = Model.PageSize  })" class="btn btn-secondary">Next</a>
+            }
+        </div>
+    </div>
+</div>
